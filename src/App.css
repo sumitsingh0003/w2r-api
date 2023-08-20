@@ -1,0 +1,101 @@
+header {
+    background: #b78760;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 99;
+    padding: 10px;
+}
+
+div#basicExampleNav {
+    flex-grow: unset;
+}
+
+.navbar {
+    justify-content: space-between !important;
+}
+
+.hdrSrch {
+    outline: none !important;
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid #fff !important;
+    border-radius: 0px !important;
+    color: #fff !important;
+}
+
+.hdrSrch::placeholder {
+    color: rgba(255, 255, 255, 0.55) !important;
+}
+
+.hdrSrch:focus {
+    color: #fff !important;
+    background-color: transparent !important;
+    border-color: #fff !important;
+    outline: 0 !important;
+    box-shadow: unset !important;
+}
+
+.adminLogin {
+    margin-top: 70px;
+}
+.loadingImge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    background: #ffffffab;
+}
+
+table {
+    caption-side: bottom;
+    border-collapse: collapse;
+    border: 1px solid #eee;  width: 100%;
+}
+thead tr {
+    background: #b78760;
+    color: #fff;
+}
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.allUsers {
+    margin-top: 75px;
+    padding: 50px 0px;
+    background: #ededed;
+}
+
+.userentries {
+    padding: 10px;
+    border: 1px solid #ddd;
+    background: #fff;
+}
+.userentries table tbody tr td button {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    background: none;
+    outline: none;
+    border: none;
+}
+.userentries table tbody tr td button img {
+    width: 100%;
+}
+.footLink a {
+    color: #000 !important;
+    text-decoration: none;
+}
