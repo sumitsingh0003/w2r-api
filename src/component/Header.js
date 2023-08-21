@@ -76,17 +76,6 @@ const Header = () => {
               </li> : ''}
              
             </ul>
-
-            <form className="form-inline">
-              <div className="md-form my-0">
-                  {/* <input
-                    className="form-control mr-sm-2 hdrSrch"
-                    type="text"
-                    placeholder="Search"
-                    aria-label="Search"
-                  /> */}
-              </div>
-            </form>
           </div>
         </nav>
       </div>
