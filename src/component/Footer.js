@@ -135,7 +135,7 @@ const Footer = () => {
           <div
             className="text-center p-3 text-white"
             style={{backgroundColor: "rgba(0, 0, 0)"}}
-          > © 2023 Copyright: <Link className="text-white" target="_blank" href="https://sumitcoder.in"> Sumit Coder </Link>
+          > © 2023 Copyright: <Link className="text-white" target="_blank" to="https://sumitcoder.in"> Sumit Coder </Link>
           </div>
         </footer>
   );

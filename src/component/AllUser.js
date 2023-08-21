@@ -8,14 +8,15 @@ import Loading from "../img/loading.gif";
 const AllUser = () => {
   const navigate = useNavigate();
   const [allData, setAllData] = useState([]);
-  const [inputData, setInputData]= useState({
-    name:"",email:""
-  })
+  const [inputData, setInputData] = useState({
+    name: "",
+    email: "",
+  });
   const [state, setstate] = useState(false);
 
   const getData = async () => {
     setstate(true);
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
 
     try {
       const response = await axios.get(
@@ -29,56 +30,57 @@ const AllUser = () => {
       );
       if (response.status >= 200 && response.status < 300) {
         if (response.data.data) {
-              setAllData(response.data.data);
-              setstate(false);
-            }
+          setAllData(response.data.data);
+          setstate(false);
+        }
       } else {
-        console.log('Server returned an error:');
+        console.log("Server returned an error:");
       }
     } catch (error) {
       if (error.message) {
         localStorage.removeItem("token");
-          navigate('/');
-        }
+        navigate("/");
       }
+    }
   };
 
-  const changeInputHandle = (e) =>{
-    setInputData({...inputData, [e.target.name]:e.target.value})
-  }
+  const changeInputHandle = (e) => {
+    setInputData({ ...inputData, [e.target.name]: e.target.value });
+  };
 
-    const editData = (ediValue) => {
-      const id = ediValue.id;
-      const filteredData = allData.find((val) => val.id === id);
-      setInputData({ name: filteredData.name, email: filteredData.email });
-    };
+  const editData = (ediValue) => {
+    const id = ediValue.id;
+    const filteredData = allData.find((val) => val.id === id);
+    setInputData({ name: filteredData.name, email: filteredData.email });
+  };
 
-    const updateData = async (e) =>{
-      e.preventDefault();
-      const token = localStorage.getItem('token');
-      try {
-        const response = await axios.post('https://login-api.web2rise.in/api/update-user', inputData, {
-            headers: {
-              Authorization: token, 
-              'Content-Type': 'application/json',
-            },
-          }
-        );
-        if(response.data.message==="user updated successfully"){
-          setInputData({name:"",email:""})
-          getData();
+  const updateData = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem("token");
+    try {
+      const response = await axios.post(
+        "https://login-api.web2rise.in/api/update-user",
+        inputData,
+        {
+          headers: {
+            Authorization: token,
+            "Content-Type": "application/json",
+          },
         }
-          
-        } catch (error) {
-          console.error(error); 
-        }
-  
+      );
+      if (response.data.message === "user updated successfully") {
+        setInputData({ name: "", email: "" });
+        getData();
       }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const deleteData = async (valData) => {
     setstate(true);
     const email = valData.email;
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     try {
       const resp = await axios.post(
         "https://login-api.web2rise.in/api/delete-user",
@@ -99,9 +101,20 @@ const AllUser = () => {
     }
   };
 
+  const handleInput = (e) => {
+    const vals= e.target.value;
+    if(vals){
+      setAllData(allData.filter((filtData) =>
+            filtData.name.toLowerCase().includes(e.target.value.toLowerCase())
+          )
+        );
+    }else{
+      getData()
+    }
+  }
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (!token) {
       navigate("/");
     } else {
@@ -110,16 +123,30 @@ const AllUser = () => {
     // eslint-disable-next-line
   }, []);
 
+
   return (
     <>
       {state ? (
         <div className="loadingImge">
           <img src={Loading} alt="Loading " className="loading Imge" />
         </div>
-      ) : ("" )}
+      ) : (
+        ""
+      )}
 
       <section className="allUsers">
         <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <div className="searchBox">
+                <input
+                  placeholder="Search with Name"
+                  onChange={handleInput}
+                  type="search"
+                />
+              </div>
+            </div>
+          </div>
           <div className="row">
             <div className="col-md-12">
               <div className="userentries">
@@ -206,7 +233,7 @@ const AllUser = () => {
                     name="name"
                     onChange={changeInputHandle}
                     value={inputData.email}
-                    disabled 
+                    disabled
                   />
                   <label className="form-label" htmlFor="form2Example1">
                     Email

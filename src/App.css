@@ -99,3 +99,12 @@ tr:nth-child(even) {
     color: #000 !important;
     text-decoration: none;
 }
+.searchBox {
+    margin-bottom: 20px;
+}
+.searchBox input {
+    padding: 8px;
+    outline: none;
+    width: 25%;
+    border: none;
+}

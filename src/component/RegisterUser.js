@@ -1,7 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import ThanksMsg from '../img/success.gif'
-import {useNavigate} from "react-router-dom" 
-import Cookies from 'js-cookie';
+import {useNavigate} from "react-router-dom"
 import axios from "axios";
 
 const RegisterUser = () => {
@@ -15,7 +14,7 @@ const RegisterUser = () => {
   
   const submtForm = async (e) =>{
     e.preventDefault();
-    const token = Cookies.get('token');
+    const token = localStorage.getItem("token");
     try {
       const response = await axios.post('https://login-api.web2rise.in/api/create-user', handleInput, {
           headers: {
@@ -73,10 +72,7 @@ const RegisterUser = () => {
                     <div className="card-body p-4 p-lg-5 text-black">
                       <form >
                         <div className="d-flex align-items-center mb-3 pb-1">
-                          <i
-                            className="fas fa-cubes fa-2x me-3"
-                            style={{color: "#ff6219"}}
-                          ></i>
+                        <i className="fa fa-cubes fa-2x me-3" aria-hidden="true"  style={{color: "#ff6219"}}></i>
                           <span className="h1 fw-bold mb-0">Create User</span>
                         </div>
 
